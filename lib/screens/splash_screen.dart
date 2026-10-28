@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:creative_shop/screens/home.dart';
-import 'package:creative_shop/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,6 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(milliseconds: 2000),
       () {
+        if (!mounted) return;
         final isLoggedIn = context.read<SessionCubit>().state is SessionAuthenticated;
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) {
@@ -43,8 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final sessionState = context.watch<SessionCubit>().state;
-    final isLoggedIn = sessionState is SessionAuthenticated;
+    final _ = context.watch<SessionCubit>().state;
 
     return Scaffold(
       body: AnimatedOpacity(

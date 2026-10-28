@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intrinsic_grid_view/intrinsic_grid_view.dart';
 
 import '../shared/constant.dart';
@@ -102,13 +101,10 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: ButtonStyle(
-                                        overlayColor: MaterialStateColor
-                                            .resolveWith((_) =>
-                                            secondaryColor
-                                                .withOpacity(.1)),
+                                        overlayColor: WidgetStateColor.resolveWith(
+                                            (_) => secondaryColor.withValues(alpha: 0.1)),
                                         foregroundColor:
-                                        MaterialStateProperty.all<
-                                            Color>(secondaryColor),
+                                            const WidgetStatePropertyAll<Color>(secondaryColor),
                                       ),
                                       onPressed: () {
                                         Navigator.of(context)
@@ -364,21 +360,21 @@ late QuerySnapshot<Map<String, dynamic>> newestCategoryData;
 
 
 Future getData(BuildContext context) async {
-  DocumentReference prouductsData = FirebaseFirestore.instance
+  DocumentReference productsData = FirebaseFirestore.instance
       .collection('products')
       .doc('tXmQYu9kGr7OeE9X8N8I');
   //if(trendCards.isEmpty && newestCards.isEmpty)
   for (int i = 0; i < nameOfCategories.length; i++) {
 
     //if(trendCards.isEmpty)
-    trendCategoryData = await prouductsData
+    trendCategoryData = await productsData
         .collection(nameOfCategories[i])
         .where('trending', isEqualTo: true)
         .get();
 
 
     //if(newestCards.isEmpty)
-    newestCategoryData = await prouductsData
+    newestCategoryData = await productsData
         .collection(nameOfCategories[i])
         .where('newest', isEqualTo: true)
         .get();

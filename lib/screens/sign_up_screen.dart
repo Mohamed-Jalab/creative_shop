@@ -111,7 +111,7 @@ class SignUpScreen extends StatelessWidget {
                     if (state is SignUpLoadingState)
                       LinearProgressIndicator(
                         color: secondaryColor,
-                        backgroundColor: secondaryColor.withOpacity(.2),
+                        backgroundColor: secondaryColor.withValues(alpha: 0.2),
                       ),
                     const SizedBox(height: 30),
                     RichText(

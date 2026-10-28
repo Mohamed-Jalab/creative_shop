@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 
 import '../models/category_model.dart';
-import '../screens/home_screen.dart';
 import '../screens/widgets/item_card.dart';
 import 'constant.dart';
 
@@ -21,11 +20,11 @@ Widget buildTextField({
     obscureText: obscure,
     validator: validator,
     keyboardType: keyboardType,
-    cursorColor: secondaryColor.withOpacity(.8),
+    cursorColor: secondaryColor.withValues(alpha: 0.8),
     decoration: InputDecoration(
       prefixIcon: Icon(prefixIcon),
-      prefixIconColor: MaterialStateColor.resolveWith((states) =>
-      states.contains(MaterialState.focused)
+      prefixIconColor: WidgetStateColor.resolveWith((states) =>
+      states.contains(WidgetState.focused)
           ? secondaryColor
           : Colors.grey),
       suffixIcon: suffix,
@@ -35,13 +34,13 @@ Widget buildTextField({
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide:
-          BorderSide(color: secondaryColor.withOpacity(.8), width: 1.8)),
+          BorderSide(color: secondaryColor.withValues(alpha: 0.8), width: 1.8)),
       // border: OutlineInputBorder(
       //   borderRadius: BorderRadius.circular(8),
       //   borderSide: BorderSide(color: Colors.grey.withOpacity(.8), width: 1.8)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(color: Colors.grey.withOpacity(.8), width: 1.8),
+        borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.8), width: 1.8),
       ),
     ),
   );
@@ -79,8 +78,8 @@ Widget buildBigButton(
   return SizedBox(
     width: MediaQuery.of(context).size.width,
     child: MaterialButton(
-      highlightColor: whiteColor.withOpacity(.2),
-      splashColor: whiteColor.withOpacity(.2),
+      highlightColor: whiteColor.withValues(alpha: 0.2),
+      splashColor: whiteColor.withValues(alpha: 0.2),
       elevation: elevation,
       padding: padding,
       height: height,
@@ -152,8 +151,8 @@ Widget pageWithGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              primaryColor.withOpacity(.9),
-              primaryColor.withOpacity(0),
+              primaryColor.withValues(alpha: 0.9),
+              primaryColor.withValues(alpha: 0),
             ],
           ),
         ),
@@ -174,7 +173,7 @@ Widget pageWithGradient(
               Text(
                 subtitle,
                 style: TextStyle(
-                    color: whiteColor.withOpacity(.7), fontFamily: 'Poppins'),
+                    color: whiteColor.withValues(alpha: 0.7), fontFamily: 'Poppins'),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -334,10 +333,10 @@ void buildMessage(
               child: TextButton(
                 onPressed: secondButtonFunction,
                 style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Colors.grey.withOpacity(0.1);
+                  overlayColor: WidgetStateProperty.resolveWith<Color>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.pressed)) {
+                        return Colors.grey.withValues(alpha: 0.1);
                       }
                       return Colors.transparent;
                     },

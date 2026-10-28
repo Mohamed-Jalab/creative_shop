@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/constant.dart';
 import 'nav_bar_icon.dart';
 
 class TheAbsoluteBottomBar extends StatefulWidget {
-  TheAbsoluteBottomBar({super.key, required this.selectedInd});
+  const TheAbsoluteBottomBar({super.key, required this.selectedInd});
 
-  int selectedInd;
+  final int selectedInd;
 
   @override
   State<TheAbsoluteBottomBar> createState() => _TheAbsoluteBottomBarState();
 }
 
 class _TheAbsoluteBottomBarState extends State<TheAbsoluteBottomBar> {
+  late int selectedInd;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedInd = widget.selectedInd;
+  }
+
   @override
   Widget build(BuildContext context) {
     final navIcons = [
@@ -34,7 +41,7 @@ class _TheAbsoluteBottomBarState extends State<TheAbsoluteBottomBar> {
         onTap: () {
           if (selectedInd != 2) {
             // Navigator.of(context).pushReplacement(
-            //     MaterialPageRoute(builder: (_) => const FavoritScreen()));
+            //     MaterialPageRoute(builder: (_) => const FavoriteScreen()));
             setState(() {
               selectedInd = 2;
             });

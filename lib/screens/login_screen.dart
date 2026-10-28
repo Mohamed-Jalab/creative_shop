@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -138,7 +137,7 @@ class LoginScreen extends StatelessWidget {
                     if (state is LoginLoadingState)
                       LinearProgressIndicator(
                           color: secondaryColor,
-                          backgroundColor: secondaryColor.withOpacity(.2)),
+                          backgroundColor: secondaryColor.withValues(alpha: 0.2)),
                     // const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -164,7 +163,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Expanded(
                             child: Divider(
-                              color: Colors.grey.withOpacity(.4),
+                              color: Colors.grey.withValues(alpha: 0.4),
                               thickness: 2,
                             )),
                         const Padding(
@@ -174,7 +173,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Expanded(
                             child: Divider(
-                          color: Colors.grey.withOpacity(.4),
+                          color: Colors.grey.withValues(alpha: 0.4),
                           thickness: 2,
                         )),
                       ],
@@ -191,6 +190,7 @@ class LoginScreen extends StatelessWidget {
                           FocusManager.instance.primaryFocus?.unfocus();
                           try {
                             UserCredential userRef = await signInWithGoogle();
+                            if (!context.mounted) return;
                             final googleUser = SignUpModel(
                               username: userRef.user!.displayName ?? 'Google User',
                               email: userRef.user!.email!,
@@ -205,9 +205,7 @@ class LoginScreen extends StatelessWidget {
                               );
                             }
                           } on Exception catch (e) {
-                            if (kDebugMode) {
-                              print(e);
-                            }
+                            debugPrint(e.toString());
                           }
 
                           // SignUpModel(username: userRef.user!.displayName!, email: userRef.user!.email!, password: userRef.user!)

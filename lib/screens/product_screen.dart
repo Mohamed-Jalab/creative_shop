@@ -12,7 +12,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../cubits/product_screen/cubit.dart';
 import '../shared/component.dart';
-import 'widgets/reviews_taskiij.dart';
+import 'widgets/reviews_task.dart';
 
 int selectedItem = 0;
 int selectedItemForSize = 0;
@@ -34,7 +34,7 @@ class ProductScreen extends StatelessWidget {
 //todo set images as list and make this var the same as the list size
   final int countOfPage = 2; //edit
 
-  ScrollController sc = ScrollController(); //edit
+  final ScrollController sc = ScrollController(); //edit
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProductCubit>(
@@ -121,7 +121,7 @@ class ProductScreen extends StatelessWidget {
                                         dotHeight: 16,
                                         dotWidth: 16,
                                         dotColor:
-                                        secondaryColor.withOpacity(0.5),
+                                        secondaryColor.withValues(alpha: 0.5),
                                         activeDotColor: secondaryColor,
                                       ),
                                     ),
@@ -140,7 +140,7 @@ class ProductScreen extends StatelessWidget {
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
+                                          color: Colors.grey.withValues(alpha: 0.2),
                                           offset: const Offset(0, 0.4),
                                           spreadRadius: 4,
                                           blurRadius: 4,
@@ -276,7 +276,7 @@ class ProductScreen extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-                                        const ReviewsTaskiij(),
+                                        const ReviewsTask(),
                                         const SizedBox(height: 65),
                                         const SizedBox(height: 10),
                                       ],
@@ -301,7 +301,7 @@ class ProductScreen extends StatelessWidget {
                                     topRight: Radius.circular(15)),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
+                                    color: Colors.grey.withValues(alpha: 0.2),
                                     offset: const Offset(0, 0.4),
                                     spreadRadius: 4,
                                     blurRadius: 4,
@@ -389,11 +389,10 @@ class ProductScreen extends StatelessWidget {
                                           newPrice: price.toString(),
                                           category: category,
                                           onTap: () {
-                                            print(
-                                                '===========================');
-                                            print(imageUrl);
-                                            print(price);
-                                            print(title);
+                                            debugPrint('===========================');
+                                            debugPrint(imageUrl);
+                                            debugPrint(price.toString());
+                                            debugPrint(title);
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (_) =>

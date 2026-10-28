@@ -9,7 +9,6 @@ import 'cubits/session/cubit.dart';
 import 'firebase_options.dart';
 import 'repositories/auth_repository.dart';
 import 'screens/splash_screen.dart';
-import 'shared/constant.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

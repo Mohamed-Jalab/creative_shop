@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemCard extends StatelessWidget {
-  ItemCard({
+  const ItemCard({
     super.key,
     required this.image,
     required this.title,
@@ -24,7 +24,7 @@ class ItemCard extends StatelessWidget {
   final String category;
   final String oldPrice;
   final String newPrice;
-  void Function() onTap;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../shared/constant.dart';
 
-class ReviewsTaskiij extends StatelessWidget {
-  const ReviewsTaskiij({
+class ReviewsTask extends StatelessWidget {
+  const ReviewsTask({
     super.key,
   });
 
@@ -17,7 +17,7 @@ class ReviewsTaskiij extends StatelessWidget {
           child: Divider(endIndent: 8, indent: 8, thickness: 1),
         ),
         const Padding(
-          padding: EdgeInsets.only(right:8.0,left: 8.0),
+          padding: EdgeInsets.only(right: 8.0, left: 8.0),
           child: Text(
             'Item reviews and shop ratings',
             style: TextStyle(
@@ -26,7 +26,7 @@ class ReviewsTaskiij extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         const Padding(
-          padding: EdgeInsets.only(right:8.0,left: 8.0),
+          padding: EdgeInsets.only(right: 8.0, left: 8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -94,7 +94,6 @@ class ReviewsTaskiij extends StatelessWidget {
                           SizedBox(
                               width: 100,
                               child: LinearProgressIndicator(
-
                                 value: 100,
                                 color: secondaryColor,
                               )),
@@ -110,7 +109,7 @@ class ReviewsTaskiij extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.only(left:8.0,top: 8.0, bottom: 16.0),
+          padding: EdgeInsets.only(left: 8.0, top: 8.0, bottom: 16.0),
           child: Text(
             'Item reviews',
             style: TextStyle(
@@ -137,8 +136,8 @@ class ReviewsTaskiij extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 18)),
                           Text(
                             'Jul 30, 2023',
-                            style:
-                            TextStyle(color: Colors.grey.withOpacity(.7)),
+                            style: TextStyle(
+                                color: Colors.grey.withValues(alpha: 0.7)),
                           )
                         ],
                       ),
@@ -148,7 +147,7 @@ class ReviewsTaskiij extends StatelessWidget {
                       Row(
                         children: List.generate(
                             5,
-                                (index) => const Icon(Icons.star_rounded,
+                            (index) => const Icon(Icons.star_rounded,
                                 color: Colors.amber)),
                       ),
                       const SizedBox(
@@ -164,15 +163,17 @@ class ReviewsTaskiij extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top:8,right: 98.0, left: 98.0),
+          padding: const EdgeInsets.only(top: 8, right: 98.0, left: 98.0),
           child: OutlinedButton(
             style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(primaryColor.withOpacity(.1)),
-              side: MaterialStateProperty.all<BorderSide>(
-                  const BorderSide(color: primaryColor, width: 2)),
-              foregroundColor: MaterialStateProperty.all<Color>(primaryColor),
-              shape: MaterialStateProperty.all<OutlinedBorder>(
-                const RoundedRectangleBorder(
+              overlayColor:
+                  WidgetStatePropertyAll(primaryColor.withValues(alpha: 0.1)),
+              side: const WidgetStatePropertyAll<BorderSide>(
+                  BorderSide(color: primaryColor, width: 2)),
+              foregroundColor:
+                  const WidgetStatePropertyAll<Color>(primaryColor),
+              shape: const WidgetStatePropertyAll<OutlinedBorder>(
+                RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(1000),
                   ),
@@ -180,7 +181,7 @@ class ReviewsTaskiij extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              print('not working :)');
+              debugPrint('not working :)');
             },
             child: const Text('See all reviews (19)'),
           ),

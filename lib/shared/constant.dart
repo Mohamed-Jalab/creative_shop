@@ -11,6 +11,7 @@ const greyColor3 = Color(0xfff9f9fa);
 const whiteColor = Color(0xffffffff);
 const kColorThemeBrowse = Color(0xfffd5252);
 
+List<ItemCard> favoriteList = [];
 List<ItemCard> accessoriesCards = [];
 List<ItemCard> giftsCards = [];
 List<ItemCard> candlesCards = [];

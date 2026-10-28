@@ -16,25 +16,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  late List<Widget> pageList = [];
-
-  @override
-  initState(){
-    super.initState();
-    pageList.add(HomeScreen());
-    pageList.add(FavoriteScreen());
-    pageList.add(CartScreen());
-    pageList.add(ProfileScreen());
-
-
-  }
-
-  List<Widget> screens = [
-    const HomeScreen(),
-    const FavoriteScreen(),
-    const CartScreen(),
-    const ProfileScreen(),
+  final List<Widget> screens = const [
+    HomeScreen(),
+    FavoriteScreen(),
+    CartScreen(),
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -47,7 +33,7 @@ class _HomeState extends State<Home> {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  color: Colors.black.withOpacity(.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   offset: const Offset(0, -.2),
                   blurRadius: 15),
             ],

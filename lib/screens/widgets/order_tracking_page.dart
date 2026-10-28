@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:creative_shop/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -14,8 +11,6 @@ class OrderTrackingPage extends StatefulWidget {
 }
 
 class OrderTrackingPageState extends State<OrderTrackingPage> {
-  final Completer<GoogleMapController> _controller = Completer();
-
   static const LatLng sourceLocation = LatLng(36.2074, 37.1440);
 
   BitmapDescriptor sourceIcon = BitmapDescriptor.defaultMarker;

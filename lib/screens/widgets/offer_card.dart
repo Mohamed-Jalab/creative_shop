@@ -57,14 +57,14 @@ class OffersCard extends StatelessWidget {
                       onTap!();
                     },
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(color),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      foregroundColor: WidgetStatePropertyAll<Color>(color),
+                      shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                       )),
-                      backgroundColor: MaterialStateColor.resolveWith(
+                      backgroundColor: WidgetStateColor.resolveWith(
                           (states) => Colors.white),
-                      textStyle: MaterialStateTextStyle.resolveWith(
+                      textStyle: WidgetStateTextStyle.resolveWith(
                         (states) => TextStyle(
                           color: color,
                         ),

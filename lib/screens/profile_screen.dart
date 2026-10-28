@@ -17,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final sessionState = context.watch<SessionCubit>().state;
     final user = sessionState is SessionAuthenticated ? sessionState.user : context.read<SessionCubit>().user;
+    final navigator = Navigator.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -223,16 +224,18 @@ class ProfileScreen extends StatelessWidget {
                     subTitle: 'Are you sure you want to logout?',
                     firstButtonText: 'Logout',
                     function: () async {
-                      Navigator.of(context).pop();
+                      navigator.pop();
                       context.read<SessionCubit>().logOut();
-                      GoogleSignIn().signOut();
+                      await GoogleSignIn().signOut();
                       Future.delayed(
                         const Duration(seconds: 1),
-                        () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (_) => const LoginScreen(),
-                          ),
-                        ),
+                        () {
+                          navigator.pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => const LoginScreen(),
+                            ),
+                          );
+                        },
                       );
                     },
                     secondButtonText: 'Cancel',

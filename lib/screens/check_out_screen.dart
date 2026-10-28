@@ -1,5 +1,4 @@
 import 'package:creative_shop/screens/favorite_screen.dart';
-import 'package:creative_shop/screens/home_screen.dart';
 import 'package:creative_shop/screens/widgets/order_tracking_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -102,7 +101,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         ),
                         distance(),
                         RadioListTile(
-                            fillColor: MaterialStateProperty.all<Color>(
+                            fillColor: const WidgetStatePropertyAll<Color>(
                                 secondaryColor),
                             value: 1,
                             groupValue: 1,

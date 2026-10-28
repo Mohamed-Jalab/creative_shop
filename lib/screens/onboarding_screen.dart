@@ -86,9 +86,9 @@ class OnboardingScreen extends StatelessWidget {
                         );
                       }
                     },
-                    splashColor: whiteColor.withOpacity(.2),
-                    hoverColor: whiteColor.withOpacity(.2),
-                    focusColor: whiteColor.withOpacity(.2),
+                    splashColor: whiteColor.withValues(alpha: 0.2),
+                    hoverColor: whiteColor.withValues(alpha: 0.2),
+                    focusColor: whiteColor.withValues(alpha: 0.2),
                     backgroundColor: secondaryColor,
                     child: const Icon(Icons.arrow_forward_ios),
                   ),

@@ -1,7 +1,8 @@
 import 'package:creative_shop/screens/product_screen.dart';
-import 'package:creative_shop/screens/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:intrinsic_grid_view/intrinsic_grid_view.dart';
+
+import 'widgets/item_card.dart';
 
 import '../shared/constant.dart';
 
@@ -13,25 +14,6 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-
-  @override
-  initState() {
-    super.initState();
-    for (int i = 0; i < favoriteList.length; i++) {
-      favoriteList[i].onTap = () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => ProductScreen(
-              imageUrl: favoriteList[i].image,
-              category: favoriteList[i].category,
-              title: favoriteList[i].title,
-            ),
-          ),
-        );
-      };
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +52,28 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           children: List.generate(
             favoriteList.length,
                 (index) {
-              return favoriteList[index];
+              final item = favoriteList[index];
+              return ItemCard(
+                image: item.image,
+                title: item.title,
+                newPrice: item.newPrice,
+                category: item.category,
+                isFavorite: item.isFavorite,
+                saleText: item.saleText,
+                oldPrice: item.oldPrice,
+                backgroundColor: item.backgroundColor,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ProductScreen(
+                        imageUrl: item.image,
+                        category: item.category,
+                        title: item.title,
+                      ),
+                    ),
+                  );
+                },
+              );
             },
           ),
         ),
